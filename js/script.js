@@ -5,6 +5,13 @@ FSJS project 2 - List Filter and Pagination
    
 // Study guide for this project - https://drive.google.com/file/d/1OD1diUsTMdpfMDv677TfL1xO2CEkykSz/view?usp=sharing
 
+const listedPeople = document.getElementsByClassName('student-item')
+const items = 10;
+const page = document.querySelector('.page')
+const li = document.querySelectorAll('li')
+const listParent = document.querySelector('.student-list')
+const names = document.querySelectorAll('.student-details')
+
 
 /*** 
    Add your global variables that store the DOM elements you will 
