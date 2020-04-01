@@ -1,47 +1,71 @@
+//Here I declare global variables to store the DOM elements
+const listedStudents = document.getElementsByClassName("student-item");
+//This is variable stores how many students I want to show on each page
+const pageItems = 10;
 
-const listedPeople = document.getElementsByClassName('student-item')
-const items = 10;
-const page = document.querySelector('.page')
-const li = document.querySelectorAll('li')
-const listParent = document.querySelector('.student-list')
-const names = document.querySelectorAll('.student-details')
+//I declare search form variables and constants.
 
+const page = document.querySelector(".page");
+const list = document.querySelectorAll("li");
+const listedStudentsParent = document.querySelector(".student-list");
+const namesOfStudents = document.querySelectorAll(".student-details > h3");
 
+//I create a search form and button dynamically
 
-const show = (listedPeople,page) => {
-   const begin = page * items - items;
-   const end = page * items;
+//Search form
+const searchBar = document.createElement("input");
+searchBar.type = "text";
+searchBar.setAttribute("class", "searchInput");
+const searchPlaceHolder = (searchBar.placeholder = "Search Students...");
 
-   for (let i = 0; i < listedPeople.length; i++) {
-      if (i >= begin && i <end) {
-         listedPeople[i].style.display = 'block'
-      } else {
-         listedPeople[i].style.display = 'none'
-      }
-   }
-}
+//Search button
+const searchButton = document.createElement("button");
+searchButton.type = "button";
+searchButton.setAttribute("class", "searchBtn");
+searchButton.innerHTML = "Search";
 
-show(listedPeople,1)
+//I append the search form and search button to the HTML document
 
+const divHeader = document.querySelector(".page-header");
+divHeader.appendChild(searchButton);
+divHeader.appendChild(searchBar);
 
+//This function is simply to hide or display a set of 10 students that are suppose to show for each page link. The functions loops through the Student List.
+const showPage = (listedStudents, page) => {
+  const start = page * pageItems - pageItems;
+  let end = page * pageItems;
 
-const pageDiv = document.querySelector(".page");
+  for (let i = 0; i < listedStudents.length; i++) {
+    if (i >= start && i < end) {
+      listedStudents[i].style.display = "block";
+    } else {
+      listedStudents[i].style.display = "none";
+    }
+  }
+};
 
-const appengPage = li => {
-   if (document.querySelector(".pagination") !== null) {
-      const removeDiv = document.querySelector(".pagination");
-      pageDiv.removeChild(removeDiv);
-}
+//Call on the showPage Function with the necessary parameters
+showPage(listedStudents, 1);
 
-const pageLength = Math.ceil(list.length / pageItems);
-  const paginationDiv = document.createElement("div");
+//The appendPages function is to generate, append, and add functionality to the pagination buttons-by creating the necessary divs, ul and li elements to store the links, for the student list
+
+const div = document.querySelector(".page");
+
+const appendPages = list => {
+  if (document.querySelector(".pagination") !== null) {
+    const remove = document.querySelector(".pagination");
+    div.removeChild(remove);
+  }
+
+  const liLength = Math.ceil(list.length / pageItems);
+  const pagDiv = document.createElement("div");
   const ul = document.createElement("ul");
-  paginationDiv.className = "pagination";
-  pageDiv.appendChild(paginationDiv);
-  paginationDiv.appendChild(ul);
+  pagDiv.className = "pagination";
+  div.appendChild(pagDiv);
+  pagDiv.appendChild(ul);
 
-  for (let i = 0; i < pageLength; i++) {
-    if (i != pageLength) {
+  for (let i = 0; i < liLength; i++) {
+    if (i != liLength) {
       const li = document.createElement("li");
       ul.appendChild(li);
       const a = document.createElement("a");
@@ -53,4 +77,78 @@ const pageLength = Math.ceil(list.length / pageItems);
       li.appendChild(a);
     }
   }
-}
+
+  //Click event listener to loop through all the page links and bring up the associated number of students for the active page number
+
+  const pageClick = document.querySelectorAll("a");
+
+  for (let i = 0; i < pageClick.length; i++) {
+    pageClick[i].addEventListener("click", event => {
+      const prevPage = document.querySelector(".active");
+      prevPage.className = "";
+
+      const newPage = event.target;
+      newPage.className = "active";
+
+      const pageNumber = newPage.textContent;
+      showPage(list, pageNumber);
+    });
+  }
+};
+
+//Call on the appendPages function with the listedStudents variable as the parameter
+appendPages(listedStudents);
+
+//I build a function for the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
+
+// const searchValue = document.querySelector("input").value.toLowerCase();
+
+// const search = searchValue => {
+//   const searchResults = [];
+//   const term = event.target.value.toLowerCase();
+//   let noResults = document.querySelector(".noResults");
+
+//   if (!term) {
+//     showPage(listedStudents, 1);
+//     appendPages(listedStudents);
+//   } else {
+//     if (noResults) {
+//       noResults.parentNode.removeChild(noResults);
+//     }
+//     namesOfStudents.forEach((name, i) => {
+//       name = name.textContent.toLowerCase();
+//       if (name.indexOf(term) > -1) {
+//         searchResults.push(listedStudents[i]);
+//         listedStudents[i].style.display = "block";
+//       } else {
+//         listedStudents[i].style.display = "none";
+//       }
+//     });
+
+//     //If the search form returns no results, a message is printed on that screen. Else the function appends and shows the search results
+
+//     if (searchResults.length == 0 || searchResults === undefined) {
+//       noResults = document.createElement("h2");
+//       noResults.textContent = "No students found, please try again...";
+//       noResults.className = "noResults";
+//       page.insertBefore(noResults, listedStudentsParent);
+//       const remove = document.querySelector(".pagination");
+//       div.removeChild(remove);
+//     } else {
+//       appendPages(searchResults);
+//       showPage(searchResults, 1);
+//     }
+//     console.log(searchResults.length);
+//   }
+// };
+
+// //I invoke my search function with the keyup event listner
+// searchBar.addEventListener("keyup", e => {
+//   search(searchValue);
+// });
+
+// //Added a click event listener to my search button
+// searchButton.addEventListener("click", e => {
+//   search(searchValue);
+//   console.log("This button is functional");
+// });
