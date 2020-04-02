@@ -99,6 +99,27 @@ const appendPages = list => {
 //Call on the appendPages function with the listedStudents variable as the parameter
 appendPages(listedStudents);
 
+var form = document.querySelector("#search-form");
+var searchbox = document.querySelector(".searchbox");
+
+// Allows you to submit when you press Enter
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  //Insert code here
+});
+
+// Adds the placeholder when the searchbox is in focus
+searchbox.addEventListener("focus", function(e) {
+  searchbox.setAttribute("placeholder", "Search...");
+});
+
+// Removes Text and the placeholder when the search box is out of focus
+searchbox.addEventListener("focusout", function(e) {
+  searchbox.value = null;
+  searchbox.removeAttribute("placeholder");
+});
+
+
 //I build a function for the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
 
 // const searchValue = document.querySelector("input").value.toLowerCase();
