@@ -20,7 +20,7 @@ const searchbox = document.querySelector(".searchbox");
 // Allows you to submit when you press Enter
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  
+  //Insert code here and enter your keypress search.
 });
 
 // Adds the placeholder when the searchbox is in focus
@@ -33,6 +33,8 @@ searchbox.addEventListener("focusout", function(e) {
   searchbox.value = null;
   searchbox.removeAttribute("placeholder");
 });
+
+
 
 
 const showPage = (listedStudents, page) => {
