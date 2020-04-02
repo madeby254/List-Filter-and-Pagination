@@ -1,11 +1,11 @@
 // not much change here.  i've removed your original search bar and tidied up your new one a little.  
 
-//Here I declare global variables to store the DOM elements
+//Here I declare global constiables to store the DOM elements
 const listedStudents = document.getElementsByClassName("student-item");
-//This is variable stores how many students I want to show on each page
+//This is constiable stores how many students I want to show on each page
 const pageItems = 10;
 
-//I declare search form variables and constants.
+//I declare search form constiables and constants.
 
 const page = document.querySelector(".page");
 const list = document.querySelectorAll("li");
@@ -13,14 +13,14 @@ const listedStudentsParent = document.querySelector(".student-list");
 const namesOfStudents = document.querySelectorAll(".student-details > h3");
 
 
-// make sure to switch out your var declarations for let or const.  
-var form = document.querySelector("#search-form");
-var searchbox = document.querySelector(".searchbox");
+// make sure to switch out your const declarations for let or const.  
+const form = document.querySelector("#search-form");
+const searchbox = document.querySelector(".searchbox");
 
 // Allows you to submit when you press Enter
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  //Insert code here and enter your keypress search.
+  
 });
 
 // Adds the placeholder when the searchbox is in focus
@@ -100,7 +100,7 @@ const appendPages = list => {
   }
 };
 
-//Call on the appendPages function with the listedStudents variable as the parameter
+//Call on the appendPages function with the listedStudents constiable as the parameter
 appendPages(listedStudents);
 
 
