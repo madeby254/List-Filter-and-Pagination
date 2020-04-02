@@ -148,11 +148,6 @@ const search = searchValue => {
   }
 };
 
-//I invoke my search function with the keyup event listner
-searchBar.addEventListener("keyup", e => {
-  search(searchValue);
-});
-
 //Added a click event listener to my search button
 searchButton.addEventListener("click", e => {
   search(searchValue);
