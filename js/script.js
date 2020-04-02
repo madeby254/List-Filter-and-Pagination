@@ -99,77 +99,58 @@ const appendPages = list => {
 //Call on the appendPages function with the listedStudents variable as the parameter
 appendPages(listedStudents);
 
-var form = document.querySelector("#search-form");
-var searchbox = document.querySelector(".searchbox");
-
-// Allows you to submit when you press Enter
-form.addEventListener("submit", function(e) {
-  e.preventDefault();
-  //Insert code here
-});
-
-// Adds the placeholder when the searchbox is in focus
-searchbox.addEventListener("focus", function(e) {
-  searchbox.setAttribute("placeholder", "Search...");
-});
-
-// Removes Text and the placeholder when the search box is out of focus
-searchbox.addEventListener("focusout", function(e) {
-  searchbox.value = null;
-  searchbox.removeAttribute("placeholder");
-});
 
 
 //I build a function for the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
 
-// const searchValue = document.querySelector("input").value.toLowerCase();
+const searchValue = document.querySelector("input").value.toLowerCase();
 
-// const search = searchValue => {
-//   const searchResults = [];
-//   const term = event.target.value.toLowerCase();
-//   let noResults = document.querySelector(".noResults");
+const search = searchValue => {
+  const searchResults = [];
+  const term = event.target.value.toLowerCase();
+  let noResults = document.querySelector(".noResults");
 
-//   if (!term) {
-//     showPage(listedStudents, 1);
-//     appendPages(listedStudents);
-//   } else {
-//     if (noResults) {
-//       noResults.parentNode.removeChild(noResults);
-//     }
-//     namesOfStudents.forEach((name, i) => {
-//       name = name.textContent.toLowerCase();
-//       if (name.indexOf(term) > -1) {
-//         searchResults.push(listedStudents[i]);
-//         listedStudents[i].style.display = "block";
-//       } else {
-//         listedStudents[i].style.display = "none";
-//       }
-//     });
+  if (!term) {
+    showPage(listedStudents, 1);
+    appendPages(listedStudents);
+  } else {
+    if (noResults) {
+      noResults.parentNode.removeChild(noResults);
+    }
+    namesOfStudents.forEach((name, i) => {
+      name = name.textContent.toLowerCase();
+      if (name.indexOf(term) > -1) {
+        searchResults.push(listedStudents[i]);
+        listedStudents[i].style.display = "block";
+      } else {
+        listedStudents[i].style.display = "none";
+      }
+    });
 
-//     //If the search form returns no results, a message is printed on that screen. Else the function appends and shows the search results
+    //If the search form returns no results, a message is printed on that screen. Else the function appends and shows the search results
 
-//     if (searchResults.length == 0 || searchResults === undefined) {
-//       noResults = document.createElement("h2");
-//       noResults.textContent = "No students found, please try again...";
-//       noResults.className = "noResults";
-//       page.insertBefore(noResults, listedStudentsParent);
-//       const remove = document.querySelector(".pagination");
-//       div.removeChild(remove);
-//     } else {
-//       appendPages(searchResults);
-//       showPage(searchResults, 1);
-//     }
-//     console.log(searchResults.length);
-//   }
-// };
+    if (searchResults.length == 0 || searchResults === undefined) {
+      noResults = document.createElement("h2");
+      noResults.textContent = "No students found, please try again...";
+      noResults.className = "noResults";
+      page.insertBefore(noResults, listedStudentsParent);
+      const remove = document.querySelector(".pagination");
+      div.removeChild(remove);
+    } else {
+      appendPages(searchResults);
+      showPage(searchResults, 1);
+    }
+    console.log(searchResults.length);
+  }
+};
 
-// //I invoke my search function with the keyup event listner
-// searchBar.addEventListener("keyup", e => {
-//   search(searchValue);
-// });
+//I invoke my search function with the keyup event listner
+searchBar.addEventListener("keyup", e => {
+  search(searchValue);
+});
 
-// //Added a click event listener to my search button
-// searchButton.addEventListener("click", e => {
-//   search(searchValue);
-//   console.log("This button is functional");
-// });
+//Added a click event listener to my search button
+searchButton.addEventListener("click", e => {
+  search(searchValue);
+  console.log("This button is functional");
+});
