@@ -13,25 +13,23 @@ body{
 }
 
 .page-header{
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
+  border-radius: 25px;
 }
   .page-header h2{
-    float: left;
-    font-size: 22px;
+    font-size: 2em;
     text-transform: uppercase;
     font-weight: bold;
     color: #555;
-  }
-
-  .page-header .student-search{
-    float: right;
   }
 
     .page-header .student-search input{
       border-radius: 5px;
       border: 1px solid #eaeaea;
       padding: 8px 15px;
-      font-size: 14px;
+      font-size: 1em;
     }
 
     .page-header .student-search button{
@@ -43,7 +41,7 @@ body{
       color: #fff
     }
 
-.student-list{}
+
 
   .student-item{
     margin: 0 0 20px 0;
@@ -118,31 +116,40 @@ body{
       color: #fff;
     }
 
-    .search-form {
-      height: 110px;
-      width: 35%;
+        #form-container {
+    margin: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
     }
-    
-    .searchbox {
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      float: right;
-      border: 3px #ccc solid;
-      border-radius: 50%;
-      background: #fff;
-    }
-      .searchbox:hover {
-        cursor: pointer;
-        box-shadow: 0 0 10px 0 #7f7f7f;
-      }
-      
-      .searchbox:focus {
-        cursor: text;
-        width: 100%;
-        border-radius: 25px 25px 25px 25px;
-        outline: none;
-        text-indent: 15px;
-        background-position-x: 97%;
-        box-shadow: 0 0 10px 0 #7f7f7f;
-      }
+
+.searchbox {
+ width: 100px;
+  height: 50px;
+  font-size: 20px;
+  border: 3px #ccc solid;
+  border-radius: 50%;
+  background: #fff;
+  /* LINK FOR SEARCH ICON
+   https://www.pinclipart.com/picdir/big/485-4851736_free-png-search-icon-search-icon-free-download.png */
+  background-image: url("https://www.pinclipart.com/picdir/big/485-4851736_free-png-search-icon-search-icon-free-download.png");
+  background-size: 35px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: all 0.5s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.searchbox:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 0 #7f7f7f;
+}
+
+.searchbox:focus {
+  cursor: text;
+  width: 100%;
+  border-radius: 25px 25px 25px 25px;
+  outline: none;
+  text-indent: 15px;
+  background-position-x: 97%;
+  box-shadow: 0 0 10px 0 #7f7f7f;
+}
