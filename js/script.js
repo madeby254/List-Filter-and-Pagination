@@ -101,7 +101,7 @@ appendPages(listedStudents);
 
 
 
-//I build a function for the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
+//I build a function for ok the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
 
 const searchValue = document.querySelector("input").value.toLowerCase();
 
