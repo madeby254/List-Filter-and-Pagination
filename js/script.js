@@ -147,9 +147,3 @@ const search = searchValue => {
     console.log(searchResults.length);
   }
 };
-
-//Added a click event listener to my search button
-searchButton.addEventListener("click", e => {
-  search(searchValue);
-  console.log("This button is functional");
-});
