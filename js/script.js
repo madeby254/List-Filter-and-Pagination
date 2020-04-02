@@ -1,3 +1,5 @@
+// not much change here.  i've removed your original search bar and tidied up your new one a little.  
+
 //Here I declare global variables to store the DOM elements
 const listedStudents = document.getElementsByClassName("student-item");
 //This is variable stores how many students I want to show on each page
@@ -10,27 +12,29 @@ const list = document.querySelectorAll("li");
 const listedStudentsParent = document.querySelector(".student-list");
 const namesOfStudents = document.querySelectorAll(".student-details > h3");
 
-//I create a search form and button dynamically
 
-//Search form
-const searchBar = document.createElement("input");
-searchBar.type = "text";
-searchBar.setAttribute("class", "searchInput");
-const searchPlaceHolder = (searchBar.placeholder = "Search Students...");
+// make sure to switch out your var declarations for let or const.  
+var form = document.querySelector("#search-form");
+var searchbox = document.querySelector(".searchbox");
 
-//Search button
-const searchButton = document.createElement("button");
-searchButton.type = "button";
-searchButton.setAttribute("class", "searchBtn");
-searchButton.innerHTML = "Search";
+// Allows you to submit when you press Enter
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  //Insert code here and enter your keypress search.
+});
 
-//I append the search form and search button to the HTML document
+// Adds the placeholder when the searchbox is in focus
+searchbox.addEventListener("focus", function(e) {
+  searchbox.setAttribute("placeholder", "Search...");
+});
 
-const divHeader = document.querySelector(".page-header");
-divHeader.appendChild(searchButton);
-divHeader.appendChild(searchBar);
+// Removes Text and the placeholder when the search box is out of focus
+searchbox.addEventListener("focusout", function(e) {
+  searchbox.value = null;
+  searchbox.removeAttribute("placeholder");
+});
 
-//This function is simply to hide or display a set of 10 students that are suppose to show for each page link. The functions loops through the Student List.
+
 const showPage = (listedStudents, page) => {
   const start = page * pageItems - pageItems;
   let end = page * pageItems;
