@@ -34,14 +34,18 @@ searchbox.addEventListener("focusout", function(e) {
   searchbox.removeAttribute("placeholder");
 });
 
+// I append the search to the document
+
 const divHeader = document.querySelector(".page-header");
 divHeader.appendChild(searchbox);
 divHeader.appendChild(form);
 
+// This is to show or hide a set of the students that are supposed to be on that page
 
 const showPage = (listedStudents, page) => {
   const start = page * pageItems - pageItems;
   let end = page * pageItems;
+// Added a loop to go through the list
 
   for (let i = 0; i < listedStudents.length; i++) {
     if (i >= start && i < end) {
@@ -52,7 +56,7 @@ const showPage = (listedStudents, page) => {
   }
 };
 
-//Call on the showPage Function with the necessary parameters
+//Called the function 
 showPage(listedStudents, 1);
 
 //The appendPages function is to generate, append, and add functionality to the pagination buttons-by creating the necessary divs, ul and li elements to store the links, for the student list
