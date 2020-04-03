@@ -59,7 +59,7 @@ const showPage = (listedStudents, page) => {
 //Called the function 
 showPage(listedStudents, 1);
 
-//The appendPages function is to generate, append, and add functionality to the pagination buttons-by creating the necessary divs, ul and li elements to store the links, for the student list
+// To create the necessary divs needed
 
 const div = document.querySelector(".page");
 
@@ -90,7 +90,7 @@ const appendPages = list => {
     }
   }
 
-  //Click event listener to loop through all the page links and bring up the associated number of students for the active page number
+  //Event listener to loop through all the page links and bring the number of students active on the page
 
   const pageClick = document.querySelectorAll("a");
 
@@ -108,12 +108,12 @@ const appendPages = list => {
   }
 };
 
-//Call on the appendPages function with the listedStudents constiable as the parameter
+//Call on the appendPages 
 appendPages(listedStudents);
 
 
 
-//I build a function for ok the Search Form, in order to filter the students by letters or keywords. The function is also meant to paginate any search results.
+//function for the Search Form, in order to filter keywords
 
 const searchValue = document.querySelector("input").value.toLowerCase();
 
@@ -139,7 +139,7 @@ const search = searchValue => {
       }
     });
 
-    //If the search form returns no results, a message is printed on that screen.
+    //If there is no results a message appears on the screen
 
     if (searchResults.length == 0 || searchResults === undefined) {
       noResults = document.createElement("h2");
@@ -155,6 +155,8 @@ const search = searchValue => {
     
   }
 };
+
+// My search function event listner
 
 form.addEventListener("keyup", e => {
   search(searchValue);
