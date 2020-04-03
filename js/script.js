@@ -141,7 +141,7 @@ const search = searchValue => {
 
     if (searchResults.length == 0 || searchResults === undefined) {
       noResults = document.createElement("h2");
-      noResults.textContent = "No students found, please try again...";
+      noResults.textContent = "No results found please try a diffrent name";
       noResults.className = "noResults";
       page.insertBefore(noResults, listedStudentsParent);
       const remove = document.querySelector(".pagination");
