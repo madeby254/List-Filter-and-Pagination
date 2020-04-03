@@ -150,7 +150,7 @@ const search = searchValue => {
       appendPages(searchResults);
       showPage(searchResults, 1);
     }
-    console.log(searchResults.length);
+    
   }
 };
 
@@ -160,5 +160,5 @@ form.addEventListener("keyup", e => {
 
 searchbox.addEventListener("click", e => {
   search(searchValue);
-  console.log("This button is functional");
+  
 });
