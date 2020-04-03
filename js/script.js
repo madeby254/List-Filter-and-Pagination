@@ -1,11 +1,9 @@
-// not much change here.  i've removed your original search bar and tidied up your new one a little.  
-
-//Here I declare global constiables to store the DOM elements
+  //Here I declare and store elements
 const listedStudents = document.getElementsByClassName("student-item");
-//This is constiable stores how many students I want to show on each page
+//I stored how many items to display per page
 const pageItems = 10;
 
-//I declare search form constiables and constants.
+//I declare for variables
 
 const page = document.querySelector(".page");
 const list = document.querySelectorAll("li");
@@ -13,7 +11,7 @@ const listedStudentsParent = document.querySelector(".student-list");
 const namesOfStudents = document.querySelectorAll(".student-details > h3");
 
 
-// make sure to switch out your const declarations for let or const.  
+// created search selectors 
 const form = document.querySelector("#search-form");
 const searchbox = document.querySelector(".searchbox");
 
@@ -137,7 +135,7 @@ const search = searchValue => {
       }
     });
 
-    //If the search form returns no results, a message is printed on that screen. Else the function appends and shows the search results
+    //If the search form returns no results, a message is printed on that screen.
 
     if (searchResults.length == 0 || searchResults === undefined) {
       noResults = document.createElement("h2");
@@ -156,7 +154,8 @@ const search = searchValue => {
 
 form.addEventListener("keyup", e => {
   search(searchValue);
-});
+}
+);
 
 searchbox.addEventListener("click", e => {
   search(searchValue);
