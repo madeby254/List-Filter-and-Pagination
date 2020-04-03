@@ -20,8 +20,10 @@ const searchbox = document.querySelector(".searchbox");
 // Allows you to submit when you press Enter
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  //Insert code here and enter your keypress search.
-});
+  
+    
+  });
+
 
 // Adds the placeholder when the searchbox is in focus
 searchbox.addEventListener("focus", function(e) {
@@ -34,7 +36,9 @@ searchbox.addEventListener("focusout", function(e) {
   searchbox.removeAttribute("placeholder");
 });
 
-
+const divHeader = document.querySelector(".page-header");
+divHeader.appendChild(searchbox);
+divHeader.appendChild(form);
 
 
 const showPage = (listedStudents, page) => {
@@ -149,3 +153,12 @@ const search = searchValue => {
     console.log(searchResults.length);
   }
 };
+
+form.addEventListener("keyup", e => {
+  search(searchValue);
+});
+
+searchbox.addEventListener("click", e => {
+  search(searchValue);
+  console.log("This button is functional");
+});
